@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# React + Colores
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En este ejercicio es para calcular entre dos diferentes colores el valor de la resistencia que me daria.
+## DECLARACION
 
-Currently, two official plugins are available:
+Se define la función "calculateResistorValue" que acepta un arreglo de tipo strings como parámetro estos representan los colores.
+Se define un objeto colorValues que actúa como un diccionario para traducir los colores de las bandas de resistores a sus respectivos valores numéricos. Esto será útil para calcular el valor del resistor.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## APP
+Aquí, useState se utiliza para mantener el estado dentro del componente App. Se define un estado para cada color seleccionado
+ el valor calculado del resistor y un mensaje de error. El uso de TypeScript permite especificar el tipo de cada estado, por ejemplo, string para los colores y number null para el valor del resistor, donde null puede ser usado para representar la ausencia de un valor calculado.
 
-## Expanding the ESLint configuration
+La función calculateResistorValue se encarga de calcular el valor del resistor basado en los colores seleccionados. Si ambos colores son válidos, calcula el valor del resistor y actualiza el estado correspondiente usando setResistorValue. Si alguno de los colores no es válido, se actualiza el estado de error.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+import React, { useState } from 'react';
+const colorValues: { [color: string]: number } = {
+  "black": 0,
+  "brown": 1,
+  "red": 2,
+  "orange": 3,
+  "yellow": 4,
+  "green": 5,
+  "blue": 6,
+  "violet": 7,
+  "grey": 8,
+  "white": 9,
+};
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
